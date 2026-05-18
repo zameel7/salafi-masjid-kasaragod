@@ -37,6 +37,34 @@ export function formatDistance(km: number): string {
   return `${km.toFixed(1)} km`;
 }
 
+export function getOSMTile(lat: number, lng: number, zoom = 15) {
+  const n = Math.pow(2, zoom)
+  const xf = ((lng + 180) / 360) * n
+  const latRad = (lat * Math.PI) / 180
+  const yf = ((1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2) * n
+  const x = Math.floor(xf)
+  const y = Math.floor(yf)
+  const px = Math.round((xf - x) * 256)
+  const py = Math.round((yf - y) * 256)
+
+  // 2×2 grid of tiles so the point stays centered without upscaling
+  const ox = px >= 128 ? 0 : -1
+  const oy = py >= 128 ? 0 : -1
+  const tileUrl = (tx: number, ty: number) =>
+    `https://a.basemaps.cartocdn.com/rastertiles/voyager/${zoom}/${tx}/${ty}.png`
+
+  return {
+    tiles: [
+      { url: tileUrl(x + ox,     y + oy),     left: ox * 256,       top: oy * 256 },
+      { url: tileUrl(x + ox + 1, y + oy),     left: (ox + 1) * 256, top: oy * 256 },
+      { url: tileUrl(x + ox,     y + oy + 1), left: ox * 256,       top: (oy + 1) * 256 },
+      { url: tileUrl(x + ox + 1, y + oy + 1), left: (ox + 1) * 256, top: (oy + 1) * 256 },
+    ],
+    px,
+    py,
+  }
+}
+
 /**
  * Get user geolocation as a promise.
  */

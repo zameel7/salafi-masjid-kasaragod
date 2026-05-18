@@ -3,7 +3,7 @@ import { MapPin, Phone, User, Calendar, Navigation } from 'lucide-react'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { formatDistance } from '@/lib/geo'
+import { formatDistance, getOSMTile } from '@/lib/geo'
 import type { MasjidWithDistance } from '@/types/masjid'
 
 interface MasjidCardProps {
@@ -22,12 +22,20 @@ export function MasjidCard({ masjid }: MasjidCardProps) {
             className="w-full h-full object-cover"
             loading="lazy"
           />
-        ) : (
-          <div className="w-full h-full flex flex-col items-center justify-center gap-2">
-            <MapPin className="h-8 w-8 text-muted-foreground/40" />
-            <span className="text-xs font-medium text-muted-foreground/60">{masjid.area}</span>
-          </div>
-        )}
+        ) : (() => {
+          const { tiles, px, py } = getOSMTile(masjid.lat, masjid.lng)
+          return (
+            <>
+              <div style={{ position: 'absolute', left: `calc(50% - ${px}px)`, top: `calc(50% - ${py}px)`, width: 512, height: 512 }}>
+                {tiles.map((t) => (
+                  <img key={t.url} src={t.url} alt="" loading="lazy"
+                    style={{ position: 'absolute', left: t.left, top: t.top, width: 256, height: 256 }} />
+                ))}
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            </>
+          )
+        })()}
 
         {/* Distance badge */}
         {masjid.distance !== undefined && (

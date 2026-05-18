@@ -1,12 +1,12 @@
 import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { Navigation, MapPin, ArrowRight } from 'lucide-react'
+import { Navigation, MapPin, ArrowRight, FacebookIcon, InstagramIcon, YoutubeIcon } from 'lucide-react'
 import { MasjidList } from '@/components/MasjidList'
 import { SearchFilter } from '@/components/SearchFilter'
 import { NearbyFinder } from '@/components/NearbyFinder'
 import { MapView } from '@/components/MapView'
 import { masjids, areas } from '@/data/masjids'
-import { formatDistance } from '@/lib/geo'
+import { formatDistance, getOSMTile } from '@/lib/geo'
 import type { MasjidWithDistance } from '@/types/masjid'
 
 export function Home() {
@@ -73,9 +73,22 @@ export function Home() {
             className="block rounded-lg border border-border bg-card hover:bg-secondary transition-colors overflow-hidden"
           >
             <div className="flex items-stretch">
-              {/* Placeholder thumbnail */}
-              <div className="w-28 sm:w-36 shrink-0 bg-muted flex items-center justify-center">
-                <MapPin className="h-7 w-7 text-muted-foreground/40" />
+              {/* OSM tile thumbnail */}
+              <div className="w-28 sm:w-36 shrink-0 relative overflow-hidden bg-muted">
+                {(() => {
+                  const { tiles, px, py } = getOSMTile(nearest.lat, nearest.lng)
+                  return (
+                    <>
+                      <div style={{ position: 'absolute', left: `calc(50% - ${px}px)`, top: `calc(50% - ${py}px)`, width: 512, height: 512 }}>
+                        {tiles.map((t) => (
+                          <img key={t.url} src={t.url} alt="" loading="lazy"
+                            style={{ position: 'absolute', left: t.left, top: t.top, width: 256, height: 256 }} />
+                        ))}
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                    </>
+                  )
+                })()}
               </div>
 
               {/* Info */}
@@ -149,6 +162,18 @@ export function Home() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center text-sm text-muted-foreground">
           <p>Masjid Kasaragod — Salafi Masjid Directory</p>
           <p className="text-xs mt-1 opacity-60">For corrections, contact the community.</p>
+          <div className="flex items-center justify-center gap-4 mt-3">
+            <a href="https://www.facebook.com/WisdomKasaragodDist/" target="_blank" rel="noopener noreferrer" className="opacity-50 hover:opacity-90 transition-opacity" aria-label="Facebook">
+              <FacebookIcon className="h-4 w-4" />
+            </a>
+            <a href="https://www.instagram.com/wisdom_kasaragod/" target="_blank" rel="noopener noreferrer" className="opacity-50 hover:opacity-90 transition-opacity" aria-label="Instagram">
+              <InstagramIcon className="h-4 w-4" />
+            </a>
+            <a href="https://www.youtube.com/channel/UCTOHC_slC8EZdZLBlSWODKw" target="_blank" rel="noopener noreferrer" className="opacity-50 hover:opacity-90 transition-opacity" aria-label="YouTube">
+              <YoutubeIcon className="h-4 w-4" />
+            </a>
+          </div>
+          <p className="text-xs mt-3 opacity-50">Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80">OpenStreetMap</a> contributors</p>
         </div>
       </footer>
     </div>

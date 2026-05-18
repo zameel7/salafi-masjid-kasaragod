@@ -40,13 +40,13 @@ export function SearchFilter({
         )}
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
         <Button
           variant="ghost"
           size="sm"
           onClick={() => onAreaChange(null)}
           className={cn(
-            'rounded-full border transition-all duration-150 text-sm font-medium h-8 px-4',
+            'rounded-full border transition-all duration-150 text-sm font-medium h-8 px-4 shrink-0',
             selectedArea === null
               ? 'bg-blue-900 text-white border-blue-900 hover:bg-blue-800 hover:border-blue-800 hover:text-white'
               : 'border-border hover:border-blue-900 hover:bg-blue-50 hover:text-blue-900 dark:hover:bg-blue-950/30 dark:hover:text-blue-300',
@@ -61,7 +61,7 @@ export function SearchFilter({
             size="sm"
             onClick={() => onAreaChange(selectedArea === area ? null : area)}
             className={cn(
-              'rounded-full border transition-all duration-150 text-sm font-medium h-8 px-4',
+              'rounded-full border transition-all duration-150 text-sm font-medium h-8 px-4 shrink-0',
               selectedArea === area
                 ? 'bg-blue-900 text-white border-blue-900 hover:bg-blue-800 hover:border-blue-800 hover:text-white'
                 : 'border-border hover:border-blue-900 hover:bg-blue-50 hover:text-blue-900 dark:hover:bg-blue-950/30 dark:hover:text-blue-300',
