@@ -73,13 +73,9 @@ export function Home() {
             className="block rounded-lg border border-border bg-card hover:bg-secondary transition-colors overflow-hidden"
           >
             <div className="flex items-stretch">
-              {/* Map thumbnail */}
-              <div className="w-28 sm:w-36 shrink-0 relative">
-                <img
-                  src={`https://maps.wikimedia.org/img/osm-intl,15,${nearest.lat},${nearest.lng},300x300.png`}
-                  alt={nearest.name}
-                  className="w-full h-full object-cover"
-                />
+              {/* Placeholder thumbnail */}
+              <div className="w-28 sm:w-36 shrink-0 bg-muted flex items-center justify-center">
+                <MapPin className="h-7 w-7 text-muted-foreground/40" />
               </div>
 
               {/* Info */}

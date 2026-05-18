@@ -13,17 +13,21 @@ interface MasjidCardProps {
 export function MasjidCard({ masjid }: MasjidCardProps) {
   return (
     <Card className="group flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 bg-card border-border/60">
-      {/* Map thumbnail */}
+      {/* Thumbnail */}
       <div className="relative h-36 overflow-hidden bg-muted">
-        <img
-          src={
-            masjid.imageUrl ??
-            `https://maps.wikimedia.org/img/osm-intl,15,${masjid.lat},${masjid.lng},600x300.png`
-          }
-          alt={masjid.name}
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
+        {masjid.imageUrl ? (
+          <img
+            src={masjid.imageUrl}
+            alt={masjid.name}
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center gap-2">
+            <MapPin className="h-8 w-8 text-muted-foreground/40" />
+            <span className="text-xs font-medium text-muted-foreground/60">{masjid.area}</span>
+          </div>
+        )}
 
         {/* Distance badge */}
         {masjid.distance !== undefined && (
