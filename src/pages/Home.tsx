@@ -147,7 +147,7 @@ export function Home() {
 
       <footer className="border-t border-border mt-12 py-6">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center text-sm text-muted-foreground">
-          <p>Masjid Kasaragod — Salafi Mosque Directory</p>
+          <p>Masjid Kasaragod — Salafi Masjid Directory</p>
           <p className="text-xs mt-1 opacity-60">For corrections, contact the community.</p>
         </div>
       </footer>
