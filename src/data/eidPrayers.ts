@@ -188,5 +188,6 @@ export const eidPrayers: EidPrayerEntry[] = [
     areaLocal: 'ഉപ്പള',
     masjidId: 'uppala-salafi-juma',
     khateeb: 'Rafeeq Moulavi',
+    time: '7:00 AM',
   },
 ];
