@@ -4,12 +4,22 @@ import L from 'leaflet'
 import type { MasjidWithDistance } from '@/types/masjid'
 import { formatDistance } from '@/lib/geo'
 
+const MAIN_MASJID_ID = 'dawa-kasaragod-town'
+
 const masjidIcon = L.divIcon({
   className: '',
   html: `<div style="width:22px;height:22px;background:#0f172a;border-radius:50%;border:2.5px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.4);"></div>`,
   iconSize: [22, 22],
   iconAnchor: [11, 11],
   popupAnchor: [0, -14],
+})
+
+const mainMasjidIcon = L.divIcon({
+  className: '',
+  html: `<div style="width:30px;height:30px;background:#16a34a;border-radius:50%;border:2.5px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;color:white;font-size:13px;line-height:1;">★</div>`,
+  iconSize: [30, 30],
+  iconAnchor: [15, 15],
+  popupAnchor: [0, -18],
 })
 
 const userIcon = L.divIcon({
@@ -54,7 +64,7 @@ export function MapView({ masjids, userLocation }: MapViewProps) {
         <FitBounds positions={positions} />
 
         {validMasjids.map((m) => (
-          <Marker key={m.id} position={[m.lat, m.lng]} icon={masjidIcon}>
+          <Marker key={m.id} position={[m.lat, m.lng]} icon={m.id === MAIN_MASJID_ID ? mainMasjidIcon : masjidIcon}>
             <Popup>
               <div style={{ minWidth: '160px' }}>
                 <p style={{ fontWeight: '600', fontSize: '13px', marginBottom: '2px' }}>{m.name}</p>

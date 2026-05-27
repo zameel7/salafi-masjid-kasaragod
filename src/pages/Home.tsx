@@ -25,7 +25,11 @@ export function Home() {
     if (distances.size > 0) {
       arr.sort((a, b) => (a.distance ?? Infinity) - (b.distance ?? Infinity))
     } else {
-      arr.sort((a, b) => a.name.localeCompare(b.name))
+      arr.sort((a, b) => {
+        if (a.id === 'dawa-kasaragod-town') return -1
+        if (b.id === 'dawa-kasaragod-town') return 1
+        return a.name.localeCompare(b.name)
+      })
     }
     return arr
   }, [masjidsWithDistances, distances])
