@@ -244,6 +244,42 @@ export const masjids: Masjid[] = [
     lng: 75.1663411,
     mapsUrl: 'https://maps.app.goo.gl/k3YaKqDeKVjsbGRe8',
   },
+  {
+    id: 'salafi-mugu-road',
+    name: 'Salafi Masjid Mugu Road',
+    area: 'Mugu Road',
+    address: 'Mugu, Edanad, Kerala 671321',
+    lat: 12.6078076,
+    lng: 75.008926,
+    mapsUrl: 'https://maps.app.goo.gl/bZDaFjC8MRfvfRGV6',
+  },
+  {
+    id: 'dawa-kasaragod-town',
+    name: "Da'wa Masjid Kasaragod",
+    area: 'Kasaragod Town',
+    address: 'Opp. Municipal Vayojana Mithram, Kasaragod, Kerala 671121',
+    lat: 12.5015383,
+    lng: 74.9901586,
+    mapsUrl: 'https://maps.app.goo.gl/E95UNudZvuAu3GHj8',
+  },
+  {
+    id: 'noor-kunjathur',
+    name: 'Noor Masjid Kunjathur',
+    area: 'Kunjathur',
+    address: 'Kunjathur, Kerala 671323',
+    lat: 12.7486425,
+    lng: 74.8819656,
+    mapsUrl: 'https://maps.app.goo.gl/eZERZYCy6BPof3yL9',
+  },
+  {
+    id: 'salafi-uduma-padinjaar',
+    name: 'Salafi Masjid Uduma Padinjaar',
+    area: 'Uduma Padinjaar',
+    address: 'Padinhar Rd, Near Lalith Resort, Udma Padinjaar, Udma, Kerala 671319',
+    lat: 12.4399689,
+    lng: 75.0075019,
+    mapsUrl: 'https://maps.app.goo.gl/yDx5r7Y7Q2KjmsEn6',
+  },
 ];
 
 export const areas = [...new Set(masjids.map((m) => m.area))].sort();

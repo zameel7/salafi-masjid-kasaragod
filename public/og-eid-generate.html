@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;700;800&family=Inter:wght@400;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #0d3b1f;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .bg-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .glow-1 {
+      width: 500px; height: 500px;
+      background: rgba(34, 197, 94, 0.12);
+      top: -100px; left: -100px;
+    }
+    .glow-2 {
+      width: 400px; height: 400px;
+      background: rgba(34, 197, 94, 0.08);
+      bottom: -80px; right: -80px;
+    }
+
+    .corner {
+      position: absolute;
+      width: 72px; height: 72px;
+      border-color: rgba(255,255,255,0.12);
+      border-style: solid;
+    }
+    .tl { top: 28px; left: 28px; border-width: 2px 0 0 2px; }
+    .tr { top: 28px; right: 28px; border-width: 2px 2px 0 0; }
+    .bl { bottom: 28px; left: 28px; border-width: 0 0 2px 2px; }
+    .br { bottom: 28px; right: 28px; border-width: 0 2px 2px 0; }
+
+    .container {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .moon-emoji {
+      font-size: 64px;
+      line-height: 1;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .title-ml {
+      font-family: 'Noto Sans Malayalam', sans-serif;
+      font-size: 88px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+
+    .subtitle-ml {
+      font-family: 'Noto Sans Malayalam', sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 20px;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: rgba(255,255,255,0.2);
+      margin: 0 auto 20px;
+      border-radius: 2px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 100px;
+      padding: 8px 20px;
+      font-size: 17px;
+      font-weight: 600;
+      color: rgba(134, 239, 172, 0.9);
+      margin-bottom: 20px;
+    }
+
+    .org-line {
+      font-size: 20px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 10px;
+      letter-spacing: 0.3px;
+    }
+
+    .domain {
+      font-size: 16px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <div class="container">
+    <span class="moon-emoji">🌙</span>
+    <div class="title-ml">ഈദ്ഗാഹ്</div>
+    <div class="subtitle-ml">പെരുന്നാൾ നിസ്കാരം</div>
+    <div class="divider"></div>
+    <div class="badge">🕌&nbsp; Eid ul Adha 2026 &nbsp;·&nbsp; 24 Locations</div>
+    <div class="org-line">Salafi Masjids · Kasaragod District</div>
+    <div class="domain">masjid.wisdomkasaragod.in/eid</div>
+  </div>
+
+  <!--
+    INSTRUCTIONS:
+    1. Open this file in Chrome: http://localhost:5173/og-eid-generate.html
+    2. Open DevTools → toggle device toolbar (Ctrl/Cmd+Shift+M)
+    3. Set dimensions to exactly 1200 × 630
+    4. Right-click page → "Capture screenshot" (or use DevTools > ... > Capture screenshot)
+    5. Save as public/og-eid.png
+  -->
+</body>
+</html>
