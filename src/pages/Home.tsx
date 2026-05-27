@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { Navigation, MapPin, ArrowRight, FacebookIcon, InstagramIcon, YoutubeIcon } from 'lucide-react'
+import { Navigation, MapPin, ArrowRight, Moon, FacebookIcon, InstagramIcon, YoutubeIcon } from 'lucide-react'
 import { MasjidList } from '@/components/MasjidList'
 import { SearchFilter } from '@/components/SearchFilter'
 import { NearbyFinder } from '@/components/NearbyFinder'
@@ -64,6 +64,20 @@ export function Home() {
       </header>
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-6 space-y-5">
+        <Link
+          to="/eid"
+          className="flex items-center justify-between rounded-lg border border-green-200 bg-green-50 px-4 py-3 hover:bg-green-100 transition-colors"
+        >
+          <div className="flex items-center gap-3">
+            <Moon className="h-4 w-4 text-green-700 shrink-0" />
+            <div>
+              <span className="font-semibold text-green-900 text-sm">Eid ul Adha · 2026</span>
+              <span className="text-green-700 text-sm"> — Prayer timings for all masjids</span>
+            </div>
+          </div>
+          <ArrowRight className="h-4 w-4 text-green-700 shrink-0" />
+        </Link>
+
         <MapView masjids={masjidsWithDistances} userLocation={userLocation} />
 
         <NearbyFinder
