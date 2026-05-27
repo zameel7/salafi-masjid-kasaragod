@@ -76,6 +76,7 @@ export const eidPrayers: EidPrayerEntry[] = [
     areaLocal: 'ബംബ്രാണ',
     masjidId: 'salafi-bambrana',
     khateeb: 'Hassan Salafi',
+    time: '7:00 AM',
   },
   {
     id: 'bandiyod',
